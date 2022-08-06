@@ -22,7 +22,10 @@ INFO_BY_NUM=$($PSQL "SELECT atomic_number, name, type, symbol, atomic_mass, melt
 # get boiling point
 if [[ $1 ]]; then
     if [[ $1 =~ ^[0-9]+$ ]]; then
-        echo -e "\n$INFO_BY_NUM"
+        echo $INFO_BY_NUM | while IFS=\| read ATOMIC_NUMBER NAME TYPE SYMBOL MASS MP BP
+        do
+        echo -e "\n The element with atomic number $ATOMIC_NUMBER is $NAME ("$SYMBOL"). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MP celsius and a boiling point of $BP."| tr -s " " | sed 's/( /(/g' | sed 's/ )/)/g'
+        done
     fi
 else
     echo Please provide an element as an argument.
