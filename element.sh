@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#git commits are just going to be comments because i've been using my own editor + repo
+#one
+#two
+#three
+#four
+#five
+
 PSQL="psql -X --username=freecodecamp --dbname=periodic_table --tuples-only -c"
 
 ## arguments use ATOMIC NUMBER, SYMBOL, OR NAME
